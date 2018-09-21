@@ -21,9 +21,17 @@ public class MovesApplication extends Application<MovesConfiguration> {
         logger.info("Main");
 
         //new TwitterSearchCommand().execute("Hi, GM");
-       //new MovesApplication().run(args);
-       // new FBPostFetchCommand().execute(null);
+        //new MovesApplication().run(args);
+        // new FBPostFetchCommand().execute(null);
         //new TwitterStatusUpdateCommand().execute("Hi");
+        Invoker invoker = Invoker.getInstance();
+        CompletableFuture future = invoker.init().thenComposeAsync(aVoid->{
+            //return invoker.execute("twitter.status.write","Latest tweet");
+            return invoker.execute("fb.userPosts.posts.fetch",null);
+        }).thenComposeAsync(docs->{
+            return invoker.execute("fb.userPosts.posts.write",docs);
+        });
+        future.get();
     }
 
     @Override

@@ -41,7 +41,7 @@ public class Invoker {
             commands.put("instagram.posts.write", new InstaPostWriteCommand());
             commands.put("instagram.trends.posts.fetch", new InstaTrendsFetchCommand());
             commands.put("instagram.trends.posts.write", new InstaPostWriteCommand());
-            
+
             return commands;
         }).thenAccept(stringCommandMap -> logger.info("Commands registered " + commands.toString()));
     }
