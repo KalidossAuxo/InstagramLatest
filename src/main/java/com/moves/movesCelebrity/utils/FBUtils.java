@@ -1,3 +1,4 @@
+/*
 package com.moves.movesCelebrity.utils;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -26,3 +27,4 @@ public class FBUtils {
         return Document.parse(httpResponse.getBody().toString());
     }
 }
+*/

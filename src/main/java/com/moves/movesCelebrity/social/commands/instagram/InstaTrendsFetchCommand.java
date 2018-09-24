@@ -30,11 +30,11 @@ public class InstaTrendsFetchCommand implements Command<ArrayList<Document>, Str
         });
     }
 
-    private ArrayList<Document> fetchTrends(String arg) {
+    private ArrayList<Document> fetchTrends(String accessToken) {
 
         ArrayList<Document> posts = null;
         HttpResponse<JsonNode> httpResponse = null;
-        String url = String.format(Constants.INSTA_MEDIA_LOCATION_URL, arg,  MovesConfiguration.INSTAGRAM_ACCESS_TOKEN);
+        String url = String.format(Constants.INSTA_MEDIA_LOCATION_URL,  accessToken);
         try {
             httpResponse = Unirest.get(url).asJson();
             String response = httpResponse.getBody().toString();

@@ -1,8 +1,6 @@
 package com.moves.movesCelebrity.social;
 
-import com.moves.movesCelebrity.social.commands.instagram.InstaPostFetchCommand;
-import com.moves.movesCelebrity.social.commands.instagram.InstaPostWriteCommand;
-import com.moves.movesCelebrity.social.commands.instagram.InstaTrendsFetchCommand;
+import com.moves.movesCelebrity.social.commands.instagram.*;
 
 import com.moves.movesCelebrity.social.types.Command;
 import org.slf4j.Logger;
@@ -41,7 +39,10 @@ public class Invoker {
             commands.put("instagram.posts.write", new InstaPostWriteCommand());
             commands.put("instagram.trends.posts.fetch", new InstaTrendsFetchCommand());
             commands.put("instagram.trends.posts.write", new InstaPostWriteCommand());
-
+            commands.put("instagram.posts.userDetails.fetch" , new InstaFetchUserDetails());
+            commands.put("instagram.posts.userDetails.write" , new InstaWriteUserDetails());
+            commands.put("instagram.posts.comments.fetch" , new InstaFetchMediaComments());
+            commands.put("instagram.posts.comments.write" , new InstaWriteMediaComments());
             return commands;
         }).thenAccept(stringCommandMap -> logger.info("Commands registered " + commands.toString()));
     }

@@ -40,6 +40,7 @@ public class InstaPostFetchCommand implements Command<ArrayList<Document>, Strin
             String response = httpResponse.getBody().toString();
             if (response != null && !response.contains("error_code")) {
                 Document doc = Document.parse( response.toString() );
+                posts = (ArrayList<Document>) doc.get("data");
             }
         } catch (UnirestException e) {
             e.printStackTrace();

@@ -2,7 +2,6 @@ package com.moves.movesCelebrity.application;
 
 import com.moves.movesCelebrity.configuration.MovesConfiguration;
 import com.moves.movesCelebrity.social.Invoker;
-//import com.moves.movesCelebrity.social.commands.twitter.TwitterStatusUpdateCommand;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 import org.slf4j.Logger;
@@ -27,9 +26,9 @@ public class MovesApplication extends Application<MovesConfiguration> {
         Invoker invoker = Invoker.getInstance();
         CompletableFuture future = invoker.init().thenComposeAsync(aVoid->{
             //return invoker.execute("twitter.status.write","Latest tweet");
-            return invoker.execute("fb.userPosts.posts.fetch",null);
+            return invoker.execute("instagram.posts.comments.fetch","1868016502852301151_8570581783");
         }).thenComposeAsync(docs->{
-            return invoker.execute("fb.userPosts.posts.write",docs);
+            return invoker.execute("instagram.posts.comments.write",docs);
         });
         future.get();
     }
